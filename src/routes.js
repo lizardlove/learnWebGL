@@ -4,6 +4,7 @@ import config from './collection'
 
 export const programs = []
 export const tagsTable = {}
+export const names = []
 
 config.sort((item1, item2) => new Date(item1.date) < new Date(item2.date) ? 1 : -1).forEach(program => {
     const {
@@ -27,6 +28,7 @@ config.sort((item1, item2) => new Date(item1.date) < new Date(item2.date) ? 1 : 
         author: author || {name: 'Pipiper', email: 'xiyiailoli@gmail.com'},
         asyncModule
     }
+    names.push(name)
     programs.push(item)
 
     tags.forEach(tag => {
@@ -36,6 +38,7 @@ config.sort((item1, item2) => new Date(item1.date) < new Date(item2.date) ? 1 : 
 
         tagsTable[tag].push(item)
     })
+    
 })
 
 export const tags = Object.keys(tagsTable).sort()

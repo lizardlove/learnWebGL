@@ -6,10 +6,13 @@ import {
 import {programs} from './routes'
 import Template from './pages/template'
 import Home from './pages/home'
+import TopBar from './pages/topBar'
 
 class App extends React.Component {
+    renderTop() {
+        return <TopBar />
+    }
     renderRoutes() {
-        console.log('routes 1')
         return (
             <Switch>
                 {
@@ -28,6 +31,7 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
+                {this.renderTop()}
                 {this.renderRoutes()}
             </React.Fragment>
         )

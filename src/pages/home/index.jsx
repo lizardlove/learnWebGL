@@ -9,7 +9,7 @@ const Home = () => (
     <div className={cx('pd-home')}>
         {
             programs.map(program => (
-                <h1 keys={program.name}> {program.name} </h1>
+                <h1 key={program.name}></h1>
             ))
         }
     </div>

@@ -1,0 +1,93 @@
+@import "../../config.less";
+.topBar {
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: transparent;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 24px 24px #aaaaaa;
+    height: @top-height;
+    padding: 12px 24px;
+
+    .logo {
+        display: block;
+        text-align: center;
+        color: @theme-color;
+        margin: 0;
+        text-decoration: none;
+
+        &:hover, &:active {
+            color: #1890d0;
+            text-decoration: none;
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: normal;
+            white-space: nowrap;
+            color: inherit;
+        }
+    }
+    .search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .searchBox {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 80%;
+        border: 1px @theme-color solid;
+        border-radius: 12px;
+        max-width: 700px;
+
+        .flagSwitch {
+            float: left;
+            margin-left: 4px;
+            width: 50px;
+            margin-right: 4px;
+            text-align: center;
+
+
+        }
+        .searchSelect {
+            height: 30px;
+            position: relative;
+
+            .ant-select-selector {
+                border: transparent;
+            }
+        }
+
+        .searchButton {
+            color: @theme-color;
+            float: right;
+            text-align: center;
+            width: 35px;
+        }
+    }
+    .leave {
+        display: block;
+        float: right;
+        font-size: 28px;
+
+    }
+
+    @media (max-width: @mobile-width) {
+        padding: 12px 24px;
+        .logo > h1 {
+            font-size: 16px;
+        }
+        .leave {
+            right: 24px;
+        }
+        
+    }
+}
+
