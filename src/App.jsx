@@ -7,6 +7,8 @@ import {programs} from './routes'
 import Template from './pages/template'
 import Home from './pages/home'
 import TopBar from './pages/topBar'
+import Search from './pages/search'
+
 
 class App extends React.Component {
     renderTop() {
@@ -23,6 +25,7 @@ class App extends React.Component {
                         />
                     ))
                 }
+                <Route path={'/search'} component={Search} />
                 <Route path={'/'} component={Home} />
                 <Route render={() => <Redirect to={'/'} />} />
             </Switch>

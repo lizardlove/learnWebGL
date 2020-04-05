@@ -1,0 +1,210 @@
+@import "../../config.less";
+
+.workshopHome {
+    padding-top: @top-height;
+    margin: 0 24px;
+
+    .homePad {
+        margin-top: 24px;
+        display: flex;
+
+
+        .headline {
+            position: relative;
+            display: inline-block;
+            margin: 0 1%;
+            width: 64.6%;
+            background: white;
+            border-radius: 12px;
+
+            @media (max-width: @mobile-width) {
+                margin: 24px 5% 0 5%;
+                width: 90%;
+            }
+
+            &Cover {
+                display: block;
+                padding: 50% * 3 / 5 50%;
+                background-size: 100% auto;
+                background-position: center;
+                transition: all .3s ease-in-out;
+
+                &:hover {
+                    background-size: 120% auto;
+
+                    p > span {
+                        display: inline;
+                    }
+
+
+                }
+
+                p {
+                    position: absolute;
+                    bottom: 10px;
+                    left: 10px;
+                    font-size: @font-size-l1;
+
+                    span {
+                        display: none;
+                        font-size: @font-size-l3;
+                    }
+                }
+            }
+
+        }
+
+        .resume {
+            position: relative;
+            display: inline-block;
+            margin: 0 1%;
+            width: 31.3%;
+            background: white;
+            border-radius: 12px;
+
+            @media (max-width: @mobile-width) {
+                display: none;
+            }
+
+            &Avater {
+                position: relative;
+                padding: 5px;
+                img {
+                    width: 100%;
+                }
+                .author {
+                    position: absolute;
+                    bottom: 48px;
+                    margin: 0 0 0 -35px;
+                    font-size: @font-size-l1;
+                    letter-spacing: .5px;
+                    color: #fff;
+                    text-shadow: 1px 1px 1px rgba(0,0,0,.7);
+                    font-weight: 700;
+                    width: 130px;
+                    left: 50%;
+                    text-shadow: 1px 1px 0 #ff3f1a, -1px -1px 0 #00a7e0;
+
+                    @media (max-width: @pad-width) {
+                        font-size: @font-size-l2;
+                    }
+                }
+                .desc {
+                    text-align: center;
+                    font-size: @font-size-l2;
+                    color: #555;
+                    margin-top: 12px;
+
+                    @media (max-width: @pad-width) {
+                        font-size: @font-size-l3;
+                    }
+                }
+            }
+
+            &Links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 12px;
+
+                @media (max-width: @pad-width) {
+                    margin-top: 6px;
+                }
+                .linkItem {
+                    position: relative;
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                    font-size: @font-size-l2;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 8px;
+                    background: #ccc;
+                    a {
+                        z-index: 10;
+                        color: @theme-color;
+                    }
+
+                    &:hover {
+                        background: @theme-color;
+                        a {
+                            color: white;
+                        }
+
+                        &::after {
+                            content: attr(alt);
+                            position: absolute;
+                            top: -16px;
+                            width: 100%;
+                            height: 50%;
+                            display: flex;
+                            border-radius: 3px;
+                            justify-content: center;
+                            align-items: center;
+                            background: #666;
+                            color: white;
+                            font-size: @font-size-l3;
+
+                            @media (max-width: @pad-width) {
+                                display: none;
+                            }
+                        }
+                    }
+                    @media (max-width: @pad-width) {
+                        width: 24px;
+                        height: 24px;
+                        font-size: @font-size-l3;
+                    }
+                }
+            }
+
+            .summary {
+                position: relative;
+                margin-top: 12px;
+                text-align: center;
+                font-size: @font-size-l2;
+                
+                &Item {
+                    display: inline-block;
+                    width: 50%;
+                    color: #666;
+    
+                    &:hover {
+                        color: @theme-color;
+                    }
+    
+                    &:first-child {
+                        border-right: 1px solid #666;
+                    }
+                }
+    
+                @media (max-width: @pad-width) {
+                    margin-top: 6px;
+                    font-size: @font-size-l3;
+                }
+            }
+
+            .recommendation {
+                position: relative;
+                margin-top: 24px;
+                padding: 0 5px;
+
+                .hotTag {
+                    margin: 0 3%;
+                    text-align: center;
+                    font-size: @font-size-l2;
+                }
+
+                @media (max-width: @pad-width) {
+                    display: none;
+                }
+            }
+
+        }
+    }
+
+    .footer {
+        height: 200px;
+    }
+}

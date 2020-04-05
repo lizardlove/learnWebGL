@@ -1,0 +1,75 @@
+@import "../../config.less";
+
+.baseList {
+    position: relative;
+    margin-top: 12px;
+    display: flex;
+}
+
+.card {
+    position: relative;
+    display: inline-block;
+    background: white;
+    margin: 24px 1% 0 1%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 12px @theme-color;
+
+    @media (min-width: 1401px) {
+        width: 23%;
+    }
+  
+    @media (min-width: @pad-width) and (max-width: @wide-width) {
+        width: 31.3%;
+    }
+
+    @media (max-width: @pad-width) {
+        width: 48%;
+    }
+
+    @media (max-width: @mobile-width) {
+        margin: 24px 5% 0 5%;
+        width: 90%;
+    }
+
+    &Cover {
+        display: block;
+        padding: 50% * 3 / 4 50%;
+        background-size: 100% auto;
+        position: relative;
+        background-position: center;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            background-size: 120% auto;
+            p > span {
+                display: inline;
+            }
+        }
+
+        p {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: @font-size-l1;
+
+            span {
+                display: none;
+                font-size: @font-size-l3;
+            }
+        }
+    }
+
+    &Info {
+        padding: 14px 12px;
+        color: black;
+
+        p {
+            font-size: @font-size-l2;
+            padding: 4px 0;
+
+            @media (max-width: @pad-width) and (min-width: @mobile-width) {
+                font-size: @font-size-l3;
+            }
+        }
+    }
+}

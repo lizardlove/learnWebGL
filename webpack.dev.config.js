@@ -72,7 +72,7 @@ module.exports = {
                 use: {
                     loader: 'url-loader',
                     query: {
-                        limit: 15000
+                        limit: 15000,
                     }
                 }
             },

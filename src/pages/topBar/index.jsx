@@ -50,7 +50,7 @@ export default class TopBar extends React.PureComponent {
         }
 
         return (
-            <header className={cx('topBar')}>
+            <header className={cx('workshopTopBar')}>
                 <Link to={'/'} className={cx('logo')}>
                     <h1>Pipiper's Workshop</h1>
                 </Link>
