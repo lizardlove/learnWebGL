@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 
 import { FieldTimeOutlined, TagsOutlined } from '@ant-design/icons'
 
+import "./base.less"
+
 export default class Card extends React.PureComponent {
     constructor (props) {
         super(props)
@@ -26,12 +28,14 @@ export default class Card extends React.PureComponent {
                         <FieldTimeOutlined />&nbsp;
                         {this.props.data.date}
                     </p>
-                    <p className={cx('cardTags')}>
+                    <div className={cx('cardTags')}>
                         <TagsOutlined /> &nbsp;
-                        {this.props.data.tags.map(tag => (
-                            <Link to={`/search?tags&${tag}`} key={tag}>{tag}&nbsp;</Link>
-                        ))}
-                    </p>
+                        <div className={cx('tags')}>
+                            {this.props.data.tags.map(tag => (
+                                <Link to={`/search?tags&${tag}`} key={tag}>{tag}&nbsp;</Link>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         )

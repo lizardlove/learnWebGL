@@ -12,7 +12,18 @@ import Search from './pages/search'
 
 class App extends React.Component {
     renderTop() {
-        return <TopBar />
+        if (!/^\/workshop/.test(this.props.location.pathname)) {
+            return <TopBar />;
+        }
+      
+        return null;
+    }
+    renderFooter() {
+        if (!/^\/workshop/.test(this.props.location.pathname)) {
+            return <div className={cx('footer')}></div>;
+        }
+      
+        return null;
     }
     renderRoutes() {
         return (
@@ -20,7 +31,7 @@ class App extends React.Component {
                 {
                     programs.map(program => (
                         <Route key={program.path}
-                               path={`/program/${program.path}`}
+                               path={`/workshop/${program.path}`}
                                render={() => <Template {...program} />}
                         />
                     ))

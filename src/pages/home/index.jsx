@@ -5,17 +5,19 @@ import { Link } from 'react-router-dom'
 import { TagsOutlined, GithubOutlined, TwitterOutlined, MailOutlined } from '@ant-design/icons'
 
 import "./base.less"
-import List from '../list'
+
+import Card from '../card'
 
 import {programs, tags} from "../../routes"
 import user from '../../user.config'
+import program from '../../collection/test'
 
 const Home = () => (
     <div className={cx('workshopHome')}>
         <div className="homePad">
             <div className={cx('headline')}>
                 <Link 
-                    to={programs[0].path} 
+                    to={`/workshop/${programs[0].path}`} 
                     className={cx('headlineCover')} 
                     style={{backgroundImage: `url(${programs[0].cover.default})`}}>
                     <p>
@@ -70,11 +72,11 @@ const Home = () => (
                 </div>
             </div>
         </div>
-        {
-            <List mode='home' data={programs}  />
-            
-        }
-        <div className={cx('footer')}></div>
+        <div className={cx('baseList')}>
+            {programs.map(item => (
+                <Card data={item} />
+            ))}
+        </div>
     </div>
 )
 

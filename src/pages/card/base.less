@@ -1,18 +1,17 @@
 @import "../../config.less";
 
-.baseList {
-    position: relative;
-    margin-top: 12px;
-    display: flex;
-}
-
 .card {
     position: relative;
     display: inline-block;
     background: white;
     margin: 24px 1% 0 1%;
+    border-radius: 12px;
     box-sizing: border-box;
-    box-shadow: 0 2px 12px @theme-color;
+    box-shadow: 0 2px 4px @theme-color;
+
+    &:hover {
+        box-shadow: 0 2px 12px @theme-color;
+    }
 
     @media (min-width: 1401px) {
         width: 23%;
@@ -61,11 +60,21 @@
 
     &Info {
         padding: 14px 12px;
-        color: black;
+        position: relative;
 
-        p {
+        .cardTime, .cardTags {
             font-size: @font-size-l2;
             padding: 4px 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            line-height: 24px;
+
+            .tags {
+                a {
+                    display: inline-block;
+                }
+            }
 
             @media (max-width: @pad-width) and (min-width: @mobile-width) {
                 font-size: @font-size-l3;

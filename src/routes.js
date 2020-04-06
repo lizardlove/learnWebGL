@@ -1,9 +1,11 @@
 import * as React from 'react'
 
 import config from './collection'
+import program from './collection/test'
 
 export const programs = []
 export const tagsTable = {}
+export const programsTable = {}
 export const names = []
 
 config.sort((item1, item2) => new Date(item1.date) < new Date(item2.date) ? 1 : -1).forEach(program => {
@@ -30,6 +32,10 @@ config.sort((item1, item2) => new Date(item1.date) < new Date(item2.date) ? 1 : 
     }
     names.push(name)
     programs.push(item)
+
+    names.forEach(name => {
+        programsTable[name] = item
+    })
 
     tags.forEach(tag => {
         if (!tagsTable[tag]) {
