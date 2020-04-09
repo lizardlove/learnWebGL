@@ -10,8 +10,8 @@ const CheckTable = Tag.CheckableTag
 
 import './base.less';
 
-import Card from "../card"
-import {TagOutlined, ProjectOutlined} from '@ant-design/icons'
+import { Card } from "../../components/card"
+import { TagOutlined, ProjectOutlined } from '@ant-design/icons'
 
 import { tags, tagsTable, names, programsTable} from '../../routes'
 

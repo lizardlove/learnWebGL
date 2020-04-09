@@ -6,9 +6,9 @@ import { TagsOutlined, GithubOutlined, TwitterOutlined, MailOutlined } from '@an
 
 import "./base.less"
 
-import Card from '../card'
+import { Card } from '../../components'
 
-import {programs, tags} from "../../routes"
+import { programs, tags } from "../../routes"
 import user from '../../user.config'
 import program from '../../collection/test'
 

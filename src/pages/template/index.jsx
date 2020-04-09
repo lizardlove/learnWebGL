@@ -3,9 +3,11 @@ import * as cx from 'classnames'
 
 import {Link} from 'react-router-dom'
 
-//import {Markdown, SideBar} from "../../components"
+import { AimOutlined } from '@ant-design/icons'
 
-import Tools from './Tools'
+import { SideBar, Markdown } from '../../components'
+import Monitor from './monitor.jsx'
+
 import "./base.less"
 
 export default class View extends React.PureComponent {
@@ -13,9 +15,9 @@ export default class View extends React.PureComponent {
         super(props)
         this.state = {
             init: false,
-            openInfo: false,
-            openTools: false,
-            openController: false,
+            openDocumentSide: false,
+            openMonitorSide: false,
+            openSettingSide: false,
             options: {}
         }
         this.info = ""
@@ -35,10 +37,11 @@ export default class View extends React.PureComponent {
 
     openSidebar(pair) {
         this.setState({
-            openInfo: false,
-            openTools: false,
+            openDocumentSide: false,
+            openMonitorSide: false,
             ...pair
         })
+        console.log(this.state)
     }
 
     render() {
@@ -47,47 +50,54 @@ export default class View extends React.PureComponent {
         }
 
         return (
-            <div className={cx('pd-view')}>
-                {this.renderMain()}
+            <div className={cx('workshop')}>
                 {this.renderTopbar()}
-                {/* {this.#renderInfo()}
-                {this.#renderTools()}
-                {this.#renderController()} */}
+                {this.renderDocumentModal()}
+                {this.renderSettingModal()}
+                {this.rednerMonitorModal()}
             </div>
         )
     }
 
     renderTopbar() {
         return (
-            <div className={cx('pd-demo-topbar')}>
-                <a href={this.props.code}
-                   className={cx('pd-demo-title')}>
-                       <h1>{this.props.name}</h1>
+            <div className={cx('programTopBar')}>
+                <a key={this.props.name} className={cx('programName')}>
+                    {this.props.name}
                 </a>
-                {this.renderActions()}
+                <div className={cx('menuBar')}>
+                    <div className={cx('menuItem')} onClick={() => this.openSidebar({openDocumentSide: !this.state.openDocumentSide})}>Document</div>
+                    <div className={cx('menuItem')} onClick={() => this.openSidebar({openMonitorSide: !this.state.openMonitorSide})}>Monitor</div>
+                    <div className={cx('menuItem')} onClick={() => this.openSidebar({openSettingSide: !this.state.openSettingSide})}>Setting</div>
+                    <Link className={cx('menuItem')} to={'/'}>Back</Link>
+                </div>
             </div>
         )
     }
 
-    renderActions() {
-        const {name} = this.props
+    renderDocumentModal() {
+        return (
+            <SideBar title={'Document'} open={this.state.openDocumentSide} onClose={() => this.setState({openDocumentSide: false})}>
+                <Markdown md={this.info} />
+            </SideBar>
+        )
+    }
+    rednerMonitorModal() {
+        return (
+            <SideBar title={'Monitor'} open={this.state.openMonitorSide} onClose={() => this.setState({openMonitorSide: false})}>
+                <Monitor />
+            </SideBar>
+        )
+    }
+
+    renderSettingModal() {
+        const Controller = this.Controller
 
         return (
-            <div className={cx('pd-demo-actions')}>
-                <div className={cx('pd-demo-action')} onClick={() => this.openSidebar({openInfo: !this.state.openInfo})}>
-                    Details
-                </div>
-                <div className={cx('pd-demo-action')} onClick={() => this.openSidebar({openTools: !this.state.Tools})}>
-                    Tools
-                </div>
-                <div className={cx('pd-demo-action')} onClick={() => this.openSidebar({openController: !this.state.openController})}>
-                    Setting
-                </div>
-                <Link to={'/'} className={cx('pd-demo-action')}>
-                    Back
-                </Link>
+            <SideBar title={'Setting'} open={this.state.openSettingSide} onClose={() => this.setState({openSettingSide: false})} direction={'Right'}>
+                {/* <Controller></Controller> */}
 
-            </div>
+            </SideBar>
         )
     }
 

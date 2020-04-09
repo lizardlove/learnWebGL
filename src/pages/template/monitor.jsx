@@ -1,17 +1,18 @@
 import * as React from 'react'
 import * as cx from 'classnames'
+
 import * as eruda from 'eruda'
 import * as erudaTiming from 'eruda-timing'
 import * as Stats from 'stats-js'
 
-export default class Tools extends React.Component {
+export default class Monitor extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             openSetting: false,
             openTools: false
         }
-        this.stats
+        this.stats = new Stats()
         this.rafID = 0
         this.statsContainer = React.createRef()
         this.consoleContainer = React.createRef()
@@ -29,11 +30,11 @@ export default class Tools extends React.Component {
 
     initTools() {
         if (window.performance) {
-            const stats = this.stats = new Stats()
+            const stats = this.stats
             stats.showPanel(0)
             stats.showPanel(1)
             stats.showPanel(2)
-            stats.dom.className = 'pd-tools-stats.content'
+            stats.dom.className = 'programMonitorStatsContent'
             stats.dom.style.position = 'relative'
             this.statsContainer.current.appendChild(stats.dom)
 
@@ -48,16 +49,17 @@ export default class Tools extends React.Component {
 
         eruda.init({
             container: this.consoleContainer.current,
-            tool: ['console', 'timing', 'info']
+            tool: ['console', 'timing', 'info'],
+            useShadowDom: false
         })
         eruda.add(erudaTiming)
         eruda.show()
 
-        const devTools = document.getElementsByClassName('erdua-dev-tools')[0]
+        let devTools = document.getElementsByClassName('eruda-dev-tools')[0]
         devTools.style.height = ''
     }
 
-    loop() {
+    loop = () => {
         if (this.stats) {
             this.stats.update()
             this.rafID = requestAnimationFrame(this.loop)
@@ -66,13 +68,13 @@ export default class Tools extends React.Component {
 
     render() {
         return (
-            <div className={'pd-demo-tools'}>
-                <div className={cx('pd-tools-stats')}
+            <div className={cx('workshopMonitor')}>
+                <div className={cx('programMonitorStats')}
                      ref={this.statsContainer}
-                />
-                <div className={cx('pd-tools-eruda')}
+                ></div>
+                <div className={cx('programEruda')}
                      ref={this.consoleContainer}
-                 />
+                ></div>
             </div>
         )
     }
