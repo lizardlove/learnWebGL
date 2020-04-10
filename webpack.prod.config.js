@@ -2,11 +2,10 @@ const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 const outPath = path.resolve(__dirname, 'dist')
-
 module.exports = {
     entry: {
         main: path.resolve(__dirname, './src/index.jsx'),
@@ -67,6 +66,8 @@ module.exports = {
                     loader: 'url-loader',
                     query: {
                         limit: 1000,
+                        context: path.resolve(__dirname, 'src/collection'),
+                        name: 'assets/[path][name].[ext]'
                     }
                 }
             },
@@ -101,10 +102,7 @@ module.exports = {
                 BROWSER: JSON.stringify(true)
             }
         }),
-        new CleanWebpackPlugin(
-            ['*'],
-            {root: outPath}
-        ),
+        new CleanWebpackPlugin(),
         new ExtractTextPlugin({
             filename: 'assets/main.[hash].css',
         }),

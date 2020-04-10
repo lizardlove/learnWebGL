@@ -51,6 +51,7 @@ export default class View extends React.PureComponent {
 
         return (
             <div className={cx('workshop')}>
+                {this.renderMain()}
                 {this.renderTopbar()}
                 {this.renderDocumentModal()}
                 {this.renderSettingModal()}
@@ -95,7 +96,7 @@ export default class View extends React.PureComponent {
 
         return (
             <SideBar title={'Setting'} open={this.state.openSettingSide} onClose={() => this.setState({openSettingSide: false})} direction={'Right'}>
-                {/* <Controller></Controller> */}
+                <Controller></Controller>
 
             </SideBar>
         )
@@ -105,7 +106,7 @@ export default class View extends React.PureComponent {
         const { Component } = this
 
         return (
-            <div className={cx('pd-demo-main')}>
+            <div className={cx('programView')}>
                 <Component {...this.state.options} />
             </div>
         )
