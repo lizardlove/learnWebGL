@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import config from './collection'
-import program from './collection/test'
 
 export const programs = []
 export const tagsTable = {}

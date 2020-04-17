@@ -1,7 +1,8 @@
-import Test from "./test"
+
+import GameofLife from './GameofLife'
 
 const config = [
-    Test
+    GameofLife
 ]
 
 export default config;

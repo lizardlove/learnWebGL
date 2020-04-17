@@ -10,7 +10,6 @@ import { Card } from '../../components'
 
 import { programs, tags } from "../../routes"
 import user from '../../user.config'
-import program from '../../collection/test'
 
 const Home = () => (
     <div className={cx('workshopHome')}>

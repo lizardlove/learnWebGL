@@ -16,17 +16,17 @@ module.exports = {
         path: outPath,
         filename: 'assets/[name].[hash].js',
         chunkFilename: 'assets/[name].chunk.[hash].js',
-        publicPath: '/'
+        publicPath: './'
     },
 
     resolve: {
-        extensions: ['.js', '.md'],
+        extensions: ['*','.js', '.md', '.jsx'],
         alias: {
             'gl-matrix': path.resolve(__dirname, './node_modules/gl-matrix/dist/gl-matrix.js')
         }
     },
 
-    external: {
+    externals: {
         'fs': true,
         'path': true
     },
@@ -95,13 +95,14 @@ module.exports = {
         ]
     },
 
+    optimization: {
+        splitChunks: {
+            name: 'react-packet',
+            minChunks: 2
+        }
+    },
+
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('development'),
-                BROWSER: JSON.stringify(true)
-            }
-        }),
         new CleanWebpackPlugin(),
         new ExtractTextPlugin({
             filename: 'assets/main.[hash].css',
@@ -111,16 +112,12 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production')
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['react-packet'],
-            miniChunks: 2
-        }),
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
         new CompressionWebpackPlugin({
-            asset: '[path]',
-            algorithm: 'gzip',
+            filename: "[path]",
+            algorithm: "gzip",
             test: /\.js$|\.css$/,
             threshold: 10240,
             minRatio: 0.8

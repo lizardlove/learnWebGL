@@ -41,7 +41,6 @@ export default class View extends React.PureComponent {
             openMonitorSide: false,
             ...pair
         })
-        console.log(this.state)
     }
 
     render() {
@@ -96,7 +95,7 @@ export default class View extends React.PureComponent {
 
         return (
             <SideBar title={'Setting'} open={this.state.openSettingSide} onClose={() => this.setState({openSettingSide: false})} direction={'Right'}>
-                <Controller></Controller>
+                <Controller handleChangeOptions={options => this.setState({options: options})}></Controller>
 
             </SideBar>
         )

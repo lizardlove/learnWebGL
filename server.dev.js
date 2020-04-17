@@ -46,7 +46,7 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/effect', express.static(path.resolve(__dirname, './src/collection')))
+app.use('/', express.static(path.resolve(__dirname, './dist')))
 
 const devServer = () => {
     const server = new webpackDevServer(webpack(config), {

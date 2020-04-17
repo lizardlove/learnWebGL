@@ -1,11 +1,27 @@
 
 {
-    "presets": [
-      "@babel/react"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false, 
+        "useBuiltIns": "entry", 
+        "corejs": {
+          "version": 3,
+          "proposals": true,
+        }
+      }
     ],
+    "@babel/preset-react"
+  ],
     "plugins": [
       "@babel/plugin-proposal-function-bind",
       "@babel/plugin-proposal-class-properties",
+      ["import", {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true 
+      }],
       "react-hot-loader/babel"
     ]
 }
