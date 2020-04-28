@@ -36,6 +36,15 @@ export default class Board extends React.Component {
             this.game.run = nextProps.run
             this.game.loop()
         }
+        if (JSON.stringify(nextProps) != '{}' && nextProps.next == true) {
+            this.game.token = true
+            this.game.loop()
+        }
+        if (JSON.stringify(nextProps) != '{}' && nextProps.clear == true) {
+            this.game.run = false
+            this.game.token = true
+            this.game.init()
+        }
     }
 
     render() {

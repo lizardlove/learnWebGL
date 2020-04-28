@@ -72,7 +72,7 @@ async function create(name, route, desc, tags) {
 
     PImage.encodeJPEGToStream(
         createCover(name),
-        fs.createWriteStream(path.resolve(dirPath, 'cover.jpg'))
+        fs.createWriteStream(path.resolve(dirPath, 'cover.png'))
     )
 }
 

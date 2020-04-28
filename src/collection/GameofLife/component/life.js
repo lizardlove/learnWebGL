@@ -38,9 +38,9 @@ export default class Life {
     }
     sceneReset = () => {
         let scene = this.scene
-        scene.column = parseInt((scene.canvas.width - scene.margin) / scene.cellSize)
-        scene.row = parseInt((scene.canvas.height - scene.margin) / scene.cellSize) 
-        let list = Array.from({length:scene.row},x=>Array.from({length:scene.column}, y=>0))
+        this.scene.column = parseInt((scene.canvas.width - scene.margin) / scene.cellSize)
+        this.scene.row = parseInt((scene.canvas.height - scene.margin) / scene.cellSize) 
+        let list = Array.from({length:this.scene.row},x=>Array.from({length:this.scene.column}, y=>0))
         scene.list.map((row, i) => {
             row.map((item, j) => {
                 if (i < scene.row && j < scene.column && item) list[i][j] = 1
@@ -57,14 +57,14 @@ export default class Life {
             }
         }
     }
+
     sceneUpdate = () => {
-        let that = this
-        let scene = this.scene
 
         this.scene.list = this.scene.list.map((row, i) => (
             row.map((item, j) => {
                 let newStatus = this.nextGeneration(i, j, item)
                 if (newStatus != item) {
+
                     this.scene.queue.push({row: i, column: j, status: newStatus})
                 }
                 return newStatus
@@ -130,9 +130,9 @@ export default class Life {
         this.context.drawImage(scene.canvas, this.camera.x, this.camera.y, this.camera.width, this.camera.height, 0, 0, this.canvas.width, this.canvas.height)
     }
     loop = () => {
-        console.log(this.run, this.rafID)
-        if (this.run) {
+        if (this.run || this.token) {
             this.update()
+            this.token = false
             this.rafID = requestAnimationFrame(this.loop)
         } else {
             if (this.rafID) {
